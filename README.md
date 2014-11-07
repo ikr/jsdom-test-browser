@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ikr/jsdom-test-browser.svg)](https://travis-ci.org/ikr/jsdom-test-browser)
+[![Build Status](https://travis-ci.org/ikr/jsdom-test-browser.svg?branch=master)](https://travis-ci.org/ikr/jsdom-test-browser)
 
 # About
 
