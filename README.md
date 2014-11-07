@@ -1,6 +1,6 @@
 # About
 
-Boilerplate I use to set up [React.js](http://facebook.github.io/react/) components testing harness
+Boilerplate I use to set up [React.js](http://facebook.github.io/react/) components' testing harness
 under Node.js, based on the amazing [jsdom.](https://github.com/tmpvar/jsdom)
 
 # Usage
