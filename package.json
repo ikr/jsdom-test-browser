@@ -1,0 +1,38 @@
+{
+  "name": "jsdom-test-browser",
+  "version": "1.0.0",
+  "description": "Boilerplate I use to set up React.js components testing harness under Node.js, based on jsdom",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "jshint tests src index.js",
+    "test": "mocha -b tests/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikr/jsdom-test-browser.git"
+  },
+  "keywords": [
+    "jsdom",
+    "jquery",
+    "reactjs",
+    "virtual",
+    "dom",
+    "testing",
+    "boilerplate",
+    "testing-harness",
+    "tdd"
+  ],
+  "author": "Ivan Krechetov <ikr@ikr.su>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ikr/jsdom-test-browser/issues"
+  },
+  "homepage": "https://github.com/ikr/jsdom-test-browser",
+  "dependencies": {
+    "jsdom": "^1.2.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.10",
+    "mocha": "^2.0.1"
+  }
+}
