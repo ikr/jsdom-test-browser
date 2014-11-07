@@ -32,7 +32,7 @@ describe('MyComponentClass', function () {
 
         beforeEach(function () {
             element = TestUtils.renderIntoDocument(
-                React.createElement(MyComponentClass({value: 42}))
+                React.createElement(MyComponentClass, {value: 42})
             ).getDOMNode();
         });
 
