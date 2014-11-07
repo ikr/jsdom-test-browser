@@ -53,5 +53,5 @@ The `TestBrowser` methods `setUp` and `tearDown` **have side effects!** They mod
 those globals to the jsdom-provided values, and then `tearDown` restores them to their original
 state.
 
-As you see from the example above, the [jQuery](http://jquery.com/) API is available at `bro.$`
+As you see from the example above, the [jQuery](http://jquery.com/) API is available at the `bro.$`
 member.
