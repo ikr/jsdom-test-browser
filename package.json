@@ -20,7 +20,9 @@
     "testing",
     "boilerplate",
     "testing-harness",
-    "tdd"
+    "tdd",
+    "globals",
+    "side-effects"
   ],
   "author": "Ivan Krechetov <ikr@ikr.su>",
   "license": "MIT",
