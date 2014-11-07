@@ -17,7 +17,7 @@ describe('MyComponentClass', function () {
         React = require('react'),
         TestUtils = require('react/addons').addons.TestUtils,
         TestBrowser = require('jsdom-test-browser'),
-        MyComponentClass = React.createFactory(require('../src/MyComponentClass')),
+        MyComponentClass = require('../src/MyComponentClass'),
 
         bro = new TestBrowser();
 
@@ -32,7 +32,7 @@ describe('MyComponentClass', function () {
 
         beforeEach(function () {
             element = TestUtils.renderIntoDocument(
-                MyComponentClass({value: 42})
+                React.createElement(MyComponentClass({value: 42}))
             ).getDOMNode();
         });
 
