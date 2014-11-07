@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ikr/jsdom-test-browser.svg)](https://travis-ci.org/ikr/jsdom-test-browser)
+
 # About
 
 Boilerplate I use to set up [React.js](http://facebook.github.io/react/) components' testing harness
