@@ -19,7 +19,8 @@ describe('MyComponentClass', function () {
 
         bro = new TestBrowser();
 
-    this.timeout(4000); // Sometimes the network is slow when fetching jQuery from Google CDN
+    // Sometimes the network is slow when fetching jQuery from Google CDN
+    this.timeout(4000);
 
     beforeEach(function (done) { bro.setUp(done); });
     afterEach(function () { bro.tearDown(); });
@@ -28,7 +29,9 @@ describe('MyComponentClass', function () {
         var element;
 
         beforeEach(function () {
-            element = TestUtils.renderIntoDocument(MyComponentClass({value: 42})).getDOMNode();
+            element = TestUtils.renderIntoDocument(
+                MyComponentClass({value: 42})
+            ).getDOMNode();
         });
 
         it('has the top class name assigned', function () {
@@ -36,7 +39,10 @@ describe('MyComponentClass', function () {
         });
 
         it('displays the value somewhere in the markup', function () {
-            assert.strictEqual(bro.$('.some-container .value-holder', element).val(), '42');
+            assert.strictEqual(
+                bro.$('.some-container .value-holder', element).val(), 
+                '42'
+            );
         });
     });
 });
