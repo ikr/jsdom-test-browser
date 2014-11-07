@@ -2,7 +2,7 @@
     'use strict';
 
     var jsdom = require('jsdom'),
-        names  = function () { return ['document', 'window', '$']; },
+        names  = function () { return ['document', 'window']; },
         TestBrowser = function () { this.stash = {}; };
 
     TestBrowser.prototype.setUp = function (callback) {
@@ -16,7 +16,7 @@
             'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
 
             function () {
-                global.$ = global.window.$;
+                this.$ = global.window.$;
                 callback();
             }.bind(this)
         );

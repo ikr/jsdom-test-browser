@@ -3,7 +3,7 @@ describe('TestBrowser', function () {
 
     var assert = require('assert'),
         TestBrowser = require('../src/TestBrowser'),
-        names = ['window', 'document', '$'],
+        names = ['window', 'document'],
         bro = new TestBrowser();
 
     this.timeout(4000);
@@ -11,7 +11,10 @@ describe('TestBrowser', function () {
     beforeEach(function () {
         global.window = 'Original window';
         global.document = 'Original document';
-        global.$ = 'Original $';
+    });
+
+    it('instance does not expose iQuery initially', function () {
+        assert(!bro.$);
     });
 
     describe('.prototype.setUp', function () {
@@ -24,6 +27,10 @@ describe('TestBrowser', function () {
                 assert(global[name]);
                 assert(global[name] !== 'Original ' + name);
             });
+        });
+
+        it('saves the jQuery as a member', function () {
+            assert(bro.$);
         });
 
         describe('with consequent tearDown', function () {
