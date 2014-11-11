@@ -14,18 +14,17 @@ describe('MyComponentClass', function () {
     'use strict';
 
     var assert = require('assert'),
+        bro = require('jsdom-test-browser'),
         React = require('react'),
         TestUtils = require('react/addons').addons.TestUtils,
-        TestBrowser = require('jsdom-test-browser'),
-        MyComponentClass = require('../src/MyComponentClass'),
-
-        bro = new TestBrowser();
+        MyComponentClass = require('../src/MyComponentClass');
 
     // Sometimes the network is slow when fetching jQuery from Google CDN
+    // You may not need it that all
     this.timeout(4000);
 
-    beforeEach(function (done) { bro.setUp(done); });
-    afterEach(function () { bro.tearDown(); });
+    before(function () { bro.setUp(); });
+    after(function () { bro.tearDown(); });
 
     describe('element HTML', function () {
         var element;
