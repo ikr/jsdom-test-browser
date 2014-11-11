@@ -1,5 +1,5 @@
 (function () {
     'use strict';
 
-    module.exports = require('./src/TestBrowser');
+    module.exports = require('./src/browser');
 }());

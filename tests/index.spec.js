@@ -3,9 +3,9 @@ describe('public API', function () {
 
     var assert = require('assert'),
         api = require('../index'),
-        TestBrowser = require('../src/TestBrowser');
+        bro = require('../src/browser');
 
-    it('is simply the TestBrowser class', function () {
-        assert.strictEqual(api, TestBrowser);
+    it('is simply the browser module', function () {
+        assert.strictEqual(api, bro);
     });
 });

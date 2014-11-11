@@ -1,25 +1,28 @@
-describe('TestBrowser', function () {
+describe('browser', function () {
     'use strict';
 
     var assert = require('assert'),
-        TestBrowser = require('../src/TestBrowser'),
-        names = ['window', 'document'],
-        bro = new TestBrowser();
-
-    this.timeout(4000);
+        bro = require('../src/browser'),
+        names = ['window', 'document'];
 
     beforeEach(function () {
         global.window = 'Original window';
         global.document = 'Original document';
     });
 
-    it('instance does not expose iQuery initially', function () {
+    it('does not expose jQuery initially', function () {
         assert(!bro.$);
     });
 
-    describe('.prototype.setUp', function () {
-        beforeEach(function (done) {
-            bro.setUp(done);
+    describe('setUp', function () {
+        var result;
+
+        beforeEach(function () {
+            result = bro.setUp();
+        });
+
+        it('returns the module reference', function () {
+            assert.strictEqual(result, bro);
         });
 
         names.forEach(function (name) {
@@ -29,11 +32,17 @@ describe('TestBrowser', function () {
             });
         });
 
-        it('saves the jQuery as a member', function () {
-            assert(bro.$);
+        describe('with subsequent jQueryify', function () {
+            beforeEach(function (done) {
+                bro.jQueryify(done);
+            });
+
+            it('saves the jQuery as a member', function () {
+                assert(bro.$);
+            });
         });
 
-        describe('with consequent tearDown', function () {
+        describe('with subsequent tearDown', function () {
             beforeEach(function () {
                 bro.tearDown();
             });
