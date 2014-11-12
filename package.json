@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "jshint tests src index.js",
-    "test": "mocha -b tests/*.spec.js"
+    "test": "mocha -b tests/browser.spec.js && mocha -b tests/index.spec.js"
   },
   "repository": {
     "type": "git",
