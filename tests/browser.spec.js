@@ -2,27 +2,17 @@ describe('browser', function () {
     'use strict';
 
     var assert = require('assert'),
-        bro = require('../src/browser'),
+        bro,
         names = ['window', 'document'];
 
-    beforeEach(function () {
+    before(function () {
         global.window = 'Original window';
         global.document = 'Original document';
     });
 
-    it('does not expose jQuery initially', function () {
-        assert(!bro.$);
-    });
-
-    describe('setUp', function () {
-        var result;
-
-        beforeEach(function () {
-            result = bro.setUp();
-        });
-
-        it('returns the module reference', function () {
-            assert.strictEqual(result, bro);
+    describe('requiring', function () {
+        before(function () {
+            bro = require('../src/browser');
         });
 
         names.forEach(function (name) {
@@ -32,25 +22,25 @@ describe('browser', function () {
             });
         });
 
+        it('does not expose jQuery initially', function () {
+            assert(!bro.$);
+        });
+
         describe('with subsequent jQueryify', function () {
-            beforeEach(function (done) {
+            before(function (done) {
                 bro.jQueryify(done);
             });
 
             it('saves the jQuery as a member', function () {
                 assert(bro.$);
             });
-        });
 
-        describe('with subsequent tearDown', function () {
-            beforeEach(function () {
-                bro.tearDown();
-            });
+            it('is idempotent', function (done) {
+                var $ = bro.$;
 
-            names.forEach(function (name) {
-                it('restores the global ' + name, function () {
-                    assert(global[name]);
-                    assert(global[name] === 'Original ' + name);
+                bro.jQueryify(function () {
+                    assert.strictEqual(bro.$, $);
+                    done();
                 });
             });
         });
