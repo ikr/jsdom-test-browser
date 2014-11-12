@@ -52,8 +52,10 @@ describe('MyComponentClass', function () {
 });
 ```
 
-The `require('jsdom-test-browser')` **has side effects!** It assigns the global `window` and
-`document` to make the React's `TestUtils.renderIntoDocument` work.
+The `require('jsdom-test-browser')` call **has side effects!** It assigns the global `window`,
+`document`, and `navigator` to make the React's initialization and `TestUtils.renderIntoDocument`
+work.
 
 As you see from the example above, the [jQuery](http://jquery.com/) API is available as the `bro.$`
-member.
+member. However, the test browser must be _jQueryify-ed_ first. You may not need that in _all_ the
+tests.

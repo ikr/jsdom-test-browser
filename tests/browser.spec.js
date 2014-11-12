@@ -3,11 +3,12 @@ describe('browser', function () {
 
     var assert = require('assert'),
         bro,
-        names = ['window', 'document'];
+        names = ['window', 'document', 'navigator'];
 
     before(function () {
-        global.window = 'Original window';
-        global.document = 'Original document';
+        names.forEach(function (name) {
+            global[name] = 'Original ' + name;
+        });
     });
 
     describe('requiring', function () {

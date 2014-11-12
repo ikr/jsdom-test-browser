@@ -5,6 +5,7 @@
 
     global.document = jsdom.jsdom('<html><body></body></html>', jsdom.level(1, 'core'));
     global.window = global.document.parentWindow;
+    global.navigator = global.window.navigator;
 
     exports.jQueryify = function (callback) {
         if (exports.$) {
