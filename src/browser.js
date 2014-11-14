@@ -26,9 +26,10 @@
 
     exports.loadJs = function (uri, callback) {
         var script = global.document.createElement('script');
-        script.setAttribute('src', uri);
-        global.document.body.appendChild(script);
 
-        setTimeout(callback, 200);
+        script.src = uri;
+        script.onload = function () { setTimeout(callback, 0); };
+
+        global.document.body.appendChild(script);
     };
 }());
