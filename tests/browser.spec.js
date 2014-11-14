@@ -46,4 +46,17 @@ describe('browser', function () {
             });
         });
     });
+
+    describe('loadJs', function () {
+        before(function (done) {
+            bro.loadJs(
+                'http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/typeahead.bundle.min.js',
+                done
+            );
+        });
+
+        it('can, for instance, include Twitter\'s Typeahead jQuery plug-in', function () {
+            assert(global.window.Bloodhound);
+        });
+    });
 });
