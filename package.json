@@ -1,6 +1,6 @@
 {
   "name": "jsdom-test-browser",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Boilerplate I use to set up React.js components testing harness under Node.js, based on jsdom",
   "main": "index.js",
   "scripts": {
