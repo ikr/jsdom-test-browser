@@ -3,9 +3,13 @@
 
     var jsdom = require('jsdom');
 
-    global.document = jsdom.jsdom();
-    global.window = global.document.parentWindow;
-    global.navigator = global.window.navigator;
+    function init() {
+        global.document = jsdom.jsdom();
+        global.window = global.document.parentWindow;
+        global.navigator = global.window.navigator;
+    }
+
+    init();
 
     exports.jQueryify = function (callback) {
         if (exports.$) {
