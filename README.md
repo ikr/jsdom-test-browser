@@ -26,7 +26,7 @@ describe('MyComponentClass', function () {
     // You may not need it that at all
     this.timeout(4000);
 
-    // Load jQuery into jsdom. Is idempotent; do it in every suite
+    // Load jQuery into jsdom. Is idempotent; can be called in every suite
     before(function (done) { bro.jQueryify(done); });
 
     describe('element HTML', function () {
