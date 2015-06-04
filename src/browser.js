@@ -3,7 +3,7 @@
 
     var jsdom = require('jsdom');
 
-    global.document = jsdom.jsdom('<html><body></body></html>', jsdom.level(1, 'core'));
+    global.document = jsdom.jsdom();
     global.window = global.document.parentWindow;
     global.navigator = global.window.navigator;
 
@@ -15,7 +15,7 @@
 
         jsdom.jQueryify(
             global.window,
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',
 
             function () {
                 exports.$ = global.window.$;
