@@ -36,4 +36,9 @@
 
         global.document.body.appendChild(script);
     };
+
+    exports.reset = function () {
+        global.window.close();
+        init();
+    };
 }());

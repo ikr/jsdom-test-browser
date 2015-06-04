@@ -59,4 +59,16 @@ describe('browser', function () {
             assert(global.window.Bloodhound);
         });
     });
+
+    describe('reset', function () {
+        it('is a function', function () {
+            assert.strictEqual(typeof bro.reset, 'function');
+        });
+
+        it('resets the DOM', function () {
+            global.document.body.className = 'marker';
+            bro.reset();
+            assert.strictEqual(global.document.body.className, '');
+        });
+    });
 });
