@@ -4,7 +4,7 @@
     var jsdom = require('jsdom'),
         MultiError = require('verror').MultiError;
 
-    exports.init = function (callback) {
+    function init(callback) {
         jsdom.env({
             html: '<html><body></body></html>',
 
@@ -20,6 +20,18 @@
                 callback();
             }
         });
+    }
+
+    exports.newBrowser = function (callback) {
+        if (global.window && (typeof global.window.close === 'function')) {
+            global.window.close();
+        }
+
+        delete exports.$;
+
+        setTimeout(function () {
+            init(callback);
+        }, 0);
     };
 
     exports.jQueryify = function (callback) {
@@ -46,13 +58,5 @@
         script.onload = function () { setTimeout(callback, 0); };
 
         global.document.body.appendChild(script);
-    };
-
-    exports.reset = function (callback) {
-        global.window.close();
-
-        setTimeout(function () {
-            exports.init(callback);
-        }, 0);
     };
 }());

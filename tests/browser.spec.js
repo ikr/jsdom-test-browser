@@ -11,9 +11,9 @@ describe('browser', function () {
         });
     });
 
-    describe('init', function () {
+    describe('newBrowser', function () {
         before(function (done) {
-            bro.init(done);
+            bro.newBrowser(done);
         });
 
         names.forEach(function (name) {
@@ -60,19 +60,18 @@ describe('browser', function () {
         });
     });
 
-    describe('reset', function () {
-        it('is a function', function () {
-            assert.strictEqual(typeof bro.reset, 'function');
+    describe('newBrowser again', function () {
+        before(function (done) {
+            global.document.body.className = 'marker';
+            bro.newBrowser(done);
         });
 
-        it('resets the DOM', function (done) {
-            global.document.body.className = 'marker';
+        it('resets the DOM', function () {
+            assert.strictEqual(global.document.body.className, '');
+        });
 
-            bro.reset(function (error) {
-                assert.ifError(error);
-                assert.strictEqual(global.document.body.className, '');
-                done();
-            });
+        it('deletes the bro.$', function () {
+            assert(!bro.$);
         });
     });
 });
