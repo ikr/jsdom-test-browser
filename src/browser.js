@@ -1,15 +1,26 @@
 (function () {
     'use strict';
 
-    var jsdom = require('jsdom');
+    var jsdom = require('jsdom'),
+        MultiError = require('verror').MultiError;
 
-    function init() {
-        global.document = jsdom.jsdom();
-        global.window = global.document.parentWindow;
-        global.navigator = global.window.navigator;
-    }
+    exports.init = function (callback) {
+        jsdom.env({
+            html: '<html><body></body></html>',
 
-    init();
+            done: function (errors, window) {
+                if (errors) {
+                    callback(new MultiError(errors));
+                    return;
+                }
+
+                global.window = window;
+                global.document = window.document;
+                global.navigator = window.navigator;
+                callback();
+            }
+        });
+    };
 
     exports.jQueryify = function (callback) {
         if (exports.$) {
@@ -37,8 +48,11 @@
         global.document.body.appendChild(script);
     };
 
-    exports.reset = function () {
+    exports.reset = function (callback) {
         global.window.close();
-        init();
+
+        setTimeout(function () {
+            exports.init(callback);
+        }, 0);
     };
 }());

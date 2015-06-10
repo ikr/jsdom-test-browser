@@ -2,7 +2,7 @@ describe('browser', function () {
     'use strict';
 
     var assert = require('assert'),
-        bro,
+        bro = require('../src/browser'),
         names = ['window', 'document', 'navigator'];
 
     before(function () {
@@ -11,9 +11,9 @@ describe('browser', function () {
         });
     });
 
-    describe('requiring', function () {
-        before(function () {
-            bro = require('../src/browser');
+    describe('init', function () {
+        before(function (done) {
+            bro.init(done);
         });
 
         names.forEach(function (name) {
@@ -65,10 +65,14 @@ describe('browser', function () {
             assert.strictEqual(typeof bro.reset, 'function');
         });
 
-        it('resets the DOM', function () {
+        it('resets the DOM', function (done) {
             global.document.body.className = 'marker';
-            bro.reset();
-            assert.strictEqual(global.document.body.className, '');
+
+            bro.reset(function (error) {
+                assert.ifError(error);
+                assert.strictEqual(global.document.body.className, '');
+                done();
+            });
         });
     });
 });
