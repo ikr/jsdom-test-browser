@@ -76,3 +76,13 @@ gulp.task('test', ['build', 'jsdom'], function () {
     ...
 });
 ```
+
+# API
+
+## newBrowser(callback)
+
+## jQueryify(callback)
+
+## $
+
+## loadJs(uri, callback)
