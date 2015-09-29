@@ -7,7 +7,7 @@ under [Node.js](http://nodejs.org/), based on the amazing [jsdom.](https://githu
 
 # Usage
 
-`npm install --save-dev jsdom-test-browser`
+`$ npm install --save-dev jsdom-test-browser`
 
 Here's a sample [Mocha](http://mochajs.org/) test suite for a React component.
 
