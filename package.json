@@ -1,7 +1,9 @@
 {
   "name": "jsdom-test-browser",
-  "version": "3.0.0",
-  "engines" : {"node" : ">=4.0.0"},
+  "version": "4.0.0",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "description": "Boilerplate I use to set up React.js components testing harness under Node.js, based on jsdom",
   "main": "index.js",
   "scripts": {
