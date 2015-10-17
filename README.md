@@ -5,6 +5,11 @@
 Boilerplate I use to set up [React.js](http://facebook.github.io/react/) components' testing harness
 under [Node.js](http://nodejs.org/), based on the amazing [jsdom.](https://github.com/tmpvar/jsdom)
 
+# Compatibility
+
+The latest version depends on jsdom v6, which requires Node v4+. For a version compatible with Node
+v0.10 and v0.12 please install `^3.0.0`. 
+
 # Usage
 
 `$ npm install --save-dev jsdom-test-browser`
