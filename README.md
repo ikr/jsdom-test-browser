@@ -70,8 +70,21 @@ describe('MyComponentClass', function () {
 });
 ```
 
-You may choose to preconfigure a single browser instance for all your tests. With
-[Gulp](http://gulpjs.com/) it would look something like that:
+## On jQueryify
+
+As jsdom supports the modern browser DOM API, I'd advise against using jQueryify until it's
+absolutely necessary: say, when you rely on a jQuery plugin inside of a React component. Otherwise,
+[querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector),
+[textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent), and
+[friends](https://developer.mozilla.org/en-US/docs/Web/API/Element) work just fine.
+
+## Central bootstrap
+
+You may choose to preconfigure a single browser instance for all your tests. With Mocha test runner,
+you'd need to use the `--delay` flag, as [described here](http://mochajs.org/#delayed-root-suite),
+and put the `bro.newBrowser(run)` call in one of your test suite files.
+
+With [Gulp](http://gulpjs.com/) it would look something like that:
 
 ```javascript
 
