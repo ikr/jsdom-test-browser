@@ -80,10 +80,6 @@ absolutely necessary: say, when you rely on a jQuery plugin inside of a React co
 
 ## Central bootstrap
 
-You may choose to preconfigure a single browser instance for all your tests. With Mocha test runner,
-you'd need to use the `--delay` flag, as [described here](http://mochajs.org/#delayed-root-suite),
-and put the `bro.newBrowser(run)` call in one of your test suite files.
-
 With [Gulp](http://gulpjs.com/) it would look something like that:
 
 ```javascript
@@ -96,6 +92,12 @@ gulp.task('test', ['build', 'jsdom'], function () {
     ...
 });
 ```
+
+## Order of Node module imports
+
+Please note that `bro.newBrowser(callback)` should be called before React is
+imported/required. That's because React probes its execution environment right away when is's
+imported.
 
 # API
 
